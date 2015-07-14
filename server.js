@@ -21,7 +21,7 @@ http.createServer(function (req, res) {
     if (req.url === "/") {
         //Send main page
         res.writeHead(200);
-        res.write(mainPage);
+        res.end(fs.readFileSync(__dirname + "/index.html"));
     } else {
         var get = req.url.match(/^\/get.*$/mgi);
         if (get) {

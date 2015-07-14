@@ -1,8 +1,110 @@
 <!DOCTYPE html>
 <html>
 
-<body>
-    herro wurld
+<head>
+    <style type="text/css">
+        body {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            background-color: black;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        p {
+            margin: 0px;
+            padding: 0px;
+            display: flex;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            visibility: hidden;
+        }
+
+        img {
+            opacity: 0;
+            z-index: 1;
+            -webkit-transition: opacity 2s;
+            transition: opacity 2s;
+            flex-shrink: 1;
+        }
+
+        div {
+            opacity: 0;
+            z-index: 1;
+            -webkit-transition: opacity 2s;
+            transition: opacity 2s;
+        }
+
+        .activeImage {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        div {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            z-index: 3;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<script>
+    var a, b, activeImage, maxWidth, maxHeight;
+    window.onload = function () {
+        a = document.getElementById("a");
+        aa = document.getElementById("aa");
+        b = document.getElementById("b");
+        bb = document.getElementById("bb");
+        activeImage = a;
+        maxWidth = document.getElementsByTagName("BODY")[0].clientWidth;
+        maxHeight = document.getElementsByTagName("BODY")[0].clientHeight;
+        loadSlide();
+        a.onload = function () {
+            console.log("fading to a");
+            aa.style.backgroundImage = "url('" + this.src + "')";
+            aa.className = "activeImage";
+            bb.className = "";
+            activeImage = b;
+            setTimeout(loadSlide, 3000);
+        };
+        b.onload = function () {
+            console.log("fading to b");
+            bb.style.backgroundImage = "url('" + this.src + "')";
+            bb.className = "activeImage";
+            aa.className = "";
+            activeImage = a;
+            setTimeout(loadSlide, 3000);
+        };
+    }
+
+    function loadSlide() {
+        console.log("loading");
+        activeImage.src = "/get/" + new Date().getTime();
+    }
+</script>
+
+<body style="">
+    <div id="aa">&nbsp;
+    </div>
+    <div id="bb">&nbsp;
+    </div>
+    <div>
+        <p><span>&nbsp;</span><img id="a" /><span>&nbsp;</span>
+        </p>
+        <p><span>&nbsp;</span><img id="b" /><span>&nbsp;</span>
+        </p>
+    </div>
 </body>
 
 </html>
