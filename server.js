@@ -10,6 +10,7 @@ var slideIndex = 0;
 //But for now just give a static listing generated at server startup
 function sendSlide(req, res) {
     var path = __dirname + "/slides/" + slides[slideIndex];
+    console.log(path);
     fs.createReadStream(path).pipe(res);
     slideIndex++;
     if (slideIndex >= slides.length)
@@ -21,7 +22,6 @@ http.createServer(function (req, res) {
         //Send main page
         res.writeHead(200);
         res.write(mainPage);
-        res.end();
     } else {
         var get = req.url.match(/^\/get.*$/mgi);
         if (get) {
@@ -29,7 +29,6 @@ http.createServer(function (req, res) {
             if (slides[slideIndex]) {
                 res.writeHead(200);
                 sendSlide(req, res);
-                res.end();
             } else {
                 res.writeHead(404);
                 res.end();
