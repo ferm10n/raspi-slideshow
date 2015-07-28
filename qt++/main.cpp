@@ -13,6 +13,7 @@ int main(int argc, char *argv[ ])
     img.load("slides/download.jpg");
     item.setPixmap(img);
     QGraphicsOpacityEffect opef;
+    opef.setOpacity(0.1);
     item.setGraphicsEffect(&opef);
     scene.addItem(&item);
     QGraphicsView view(&scene, window);
