@@ -13,7 +13,7 @@
             margin: 0px;
             padding: 0px;
         }
-
+        
         p {
             margin: 0px;
             padding: 0px;
@@ -25,7 +25,7 @@
             bottom: 0px;
             visibility: hidden;
         }
-
+        
         img {
             opacity: 0;
             z-index: 1;
@@ -33,19 +33,19 @@
             transition: opacity 2s;
             flex-shrink: 1;
         }
-
+        
         div {
             opacity: 0;
             z-index: 1;
-            -webkit-transition: opacity 2s;
-            transition: opacity 2s;
+            /*            -webkit-transition: opacity 2s;*/
+            /*            transition: opacity 2s;*/
         }
-
+        
         .activeImage {
             opacity: 1;
             z-index: 2;
         }
-
+        
         div {
             position: fixed;
             left: 0px;
@@ -60,7 +60,7 @@
     </style>
 </head>
 <script>
-    var a, b, activeImage, maxWidth, maxHeight;
+    var a, b, activeImage, maxWidth, maxHeight, slideDuration = 10 * 1000;
     window.onload = function () {
         a = document.getElementById("a");
         aa = document.getElementById("aa");
@@ -71,20 +71,18 @@
         maxHeight = document.getElementsByTagName("BODY")[0].clientHeight;
         loadSlide();
         a.onload = function () {
-            console.log("fading to a");
             aa.style.backgroundImage = "url('" + this.src + "')";
             aa.className = "activeImage";
             bb.className = "";
             activeImage = b;
-            setTimeout(loadSlide, 3000);
+            setTimeout(loadSlide, slideDuration);
         };
         b.onload = function () {
-            console.log("fading to b");
             bb.style.backgroundImage = "url('" + this.src + "')";
             bb.className = "activeImage";
             aa.className = "";
             activeImage = a;
-            setTimeout(loadSlide, 3000);
+            setTimeout(loadSlide, slideDuration);
         };
     }
 
