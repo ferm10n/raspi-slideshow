@@ -15,7 +15,7 @@ int main(int argc, char *argv[ ])
     item.setPixmap(img);
     QGraphicsOpacityEffect *opef = new QGraphicsOpacityEffect;
     QPropertyAnimation *anim = new QPropertyAnimation(opef,"opacity");
-    anim->setDuration(1000);
+    anim->setDuration(7000);
     anim->setStartValue(1);
     anim->setEndValue(0);
     anim->start();
